@@ -1,0 +1,3 @@
+mkdir -p submissions/2A202602873_thai_phuc_tien/{code,curves,predictions}
+cp -r starter/* submissions/2A202602873_thai_phuc_tien/code/
+ls -la submissions/2A202602873_thai_phuc_tien/code
