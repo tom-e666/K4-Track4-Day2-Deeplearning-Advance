@@ -39,6 +39,7 @@ if str(FILE_DIR) not in sys.path:
 import dataset
 import eval as ev
 import losses
+import inference as inf
 import model as md
 
 
@@ -85,6 +86,7 @@ class Config:
     pred_dir: str = "predictions"
     curves_dir: str = "curves"
     save_test_predictions: bool = False
+    inference_method: str = "I00"
 
 
 def run_dir(cfg: Config) -> Path:
@@ -144,6 +146,7 @@ def train_one_epoch(net: nn.Module, loader, criterion, optimizer, scheduler, sca
     num_samples = 0
 
     for images, targets, _ in loader:
+        optimizer.zero_grad(set_to_none=True)
         images = images.to(device, non_blocking=True)
         targets = targets.to(device, non_blocking=True)
 
@@ -164,13 +167,15 @@ def train_one_epoch(net: nn.Module, loader, criterion, optimizer, scheduler, sca
             else:
                 loss = criterion(outputs, targets)
 
+        optimizer_stepped = True
         if scaler is not None and cfg.amp and torch.cuda.is_available():
             scaler.scale(loss).backward()
             scale_before = scaler.get_scale()
             scaler.step(optimizer)
             scaler.update()
             scale_after = scaler.get_scale()
-            if scheduler is not None and scale_before <= scale_after:
+            optimizer_stepped = scale_before <= scale_after
+            if scheduler is not None and optimizer_stepped:
                 scheduler.step()
         else:
             loss.backward()
@@ -178,7 +183,7 @@ def train_one_epoch(net: nn.Module, loader, criterion, optimizer, scheduler, sca
             if scheduler is not None:
                 scheduler.step()
 
-        if ema is not None:
+        if ema is not None and optimizer_stepped:
             ema.update(net)
 
         total_loss += loss.item() * len(targets)
@@ -246,6 +251,13 @@ def plot_curves(history: list[dict], path: str | Path, title: str) -> None:
 
 
 def run(cfg: Config) -> dict:
+    if cfg.inference_method not in ("I00", "I01", "I03", "I07", "I08"):
+        raise ValueError("Unsupported inference_method")
+    if cfg.save_test_predictions:
+        existing = [pred_path(cfg, "test"),
+                    Path(cfg.pred_dir) / f"{cfg.exp_id}_uncal_seed{cfg.seed}_test.csv"]
+        if any(path.exists() for path in existing):
+            raise FileExistsError("Test predictions already exist; refusing to repeat test evaluation")
     set_seed(cfg.seed)
     r_dir = run_dir(cfg)
     r_dir.mkdir(parents=True, exist_ok=True)
@@ -319,6 +331,7 @@ def run(cfg: Config) -> dict:
             "lr": tr_stats["lr"],
         }
         history.append(row)
+        pd.DataFrame(history).to_csv(r_dir / "history.csv", index=False)
 
         print(f"Epoch {ep:02d}/{cfg.epochs:02d} | Train Loss: {tr_stats['train_loss']:.4f} | "
               f"Val Loss: {v_loss:.4f} | Val F1: {v_metrics['macro_f1']:.4f} | Val Top1: {v_metrics['top1']:.4f}")
@@ -332,7 +345,7 @@ def run(cfg: Config) -> dict:
     pd.DataFrame(history).to_csv(r_dir / "history.csv", index=False)
 
     # 4. Lưu biểu đồ
-    plot_curves(history, Path(cfg.curves_dir) / f"{cfg.exp_id}_{cfg.backbone}.png",
+    plot_curves(history, Path(cfg.curves_dir) / f"{cfg.exp_id}_{cfg.backbone}_seed{cfg.seed}.png",
                 f"{cfg.exp_id}: {cfg.backbone} (Best Val F1={best_f1:.4f} @ Ep {best_epoch})")
 
     # 5. Đánh giá Checkpoint tốt nhất trên Val và lưu predictions
@@ -340,8 +353,23 @@ def run(cfg: Config) -> dict:
                               drop_rate=cfg.drop_rate, init="scratch").to(device)
     eval_net.load_state_dict(torch.load(best_ckpt_path, map_location=device))
 
+    if cfg.inference_method == "I08":
+        eval_net = inf.fuse_conv_bn(eval_net)
     val_names, val_true, val_logits, _ = evaluate(eval_net, val_loader, criterion, device)
-    val_probs = softmax(val_logits)
+
+    def inference_probs(loader, names, labels, logits, temperature=1.0):
+        if cfg.inference_method in ("I01", "I03"):
+            flip_names, flip_labels, flip_logits = inf.predict_logits(eval_net, loader, device, inf.view_hflip)
+            if flip_names != names or not np.array_equal(flip_labels, labels):
+                raise ValueError("TTA view ordering differs from identity view")
+            space = "prob" if cfg.inference_method == "I01" else "logit"
+            return inf.aggregate_views([logits, flip_logits], space=space)
+        return inf.apply_temperature(logits, temperature)
+
+    temperature = inf.fit_temperature(val_logits, val_true) if cfg.inference_method == "I07" else 1.0
+    val_probs = inference_probs(val_loader, val_names, val_true, val_logits, temperature)
+    with open(r_dir / "inference.json", "w", encoding="utf-8") as f:
+        json.dump({"method": cfg.inference_method, "temperature": temperature}, f, indent=2)
     ev.save_predictions(pred_path(cfg, "val"), val_names, val_true, val_probs)
     np.save(r_dir / "val_logits.npy", val_logits)
 
@@ -352,7 +380,10 @@ def run(cfg: Config) -> dict:
         test_loader = dataset.make_loader(test_df, cfg.images_dir, test_tf, cfg.batch_size, train=False,
                                           num_workers=cfg.num_workers)
         test_names, test_true, test_logits, _ = evaluate(eval_net, test_loader, criterion, device)
-        test_probs = softmax(test_logits)
+        test_probs = inference_probs(test_loader, test_names, test_true, test_logits, temperature)
+        if cfg.inference_method == "I07":
+            uncal_path = Path(cfg.pred_dir) / f"{cfg.exp_id}_uncal_seed{cfg.seed}_test.csv"
+            ev.save_predictions(uncal_path, test_names, test_true, softmax(test_logits))
         ev.save_predictions(pred_path(cfg, "test"), test_names, test_true, test_probs)
         np.save(r_dir / "test_logits.npy", test_logits)
         test_metrics = ev.compute_metrics(test_true, test_probs.argmax(axis=1), test_probs)

@@ -1,0 +1,14 @@
+{
+  "backbone": "convnext_tiny",
+  "recipe_id": "T05",
+  "recipe": {
+    "loss": "focal"
+  },
+  "inference_method": "I01",
+  "selection": "val macro-F1 descending; ECE ascending; p95 ascending",
+  "seeds": [
+    0,
+    1,
+    2
+  ]
+}

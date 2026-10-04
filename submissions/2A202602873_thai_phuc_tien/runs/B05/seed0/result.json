@@ -1,0 +1,12 @@
+{
+  "exp_id": "B05",
+  "seed": 0,
+  "backbone": "mobilenetv3_large_100",
+  "params_m": 4.213561,
+  "gmacs": 0.21532128,
+  "best_epoch": 8,
+  "best_val_macro_f1": 0.71352118861059,
+  "total_train_time_s": 620.0385267734528,
+  "time_per_epoch_s": 62.00385267734528,
+  "test_metrics": null
+}

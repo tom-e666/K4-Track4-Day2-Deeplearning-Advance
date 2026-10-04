@@ -1,0 +1,12 @@
+{
+  "exp_id": "B02",
+  "seed": 0,
+  "backbone": "convnext_tiny",
+  "params_m": 27.827049,
+  "gmacs": 4.454770176,
+  "best_epoch": 10,
+  "best_val_macro_f1": 0.9639469401572909,
+  "total_train_time_s": 838.6617751121521,
+  "time_per_epoch_s": 83.86617751121521,
+  "test_metrics": null
+}

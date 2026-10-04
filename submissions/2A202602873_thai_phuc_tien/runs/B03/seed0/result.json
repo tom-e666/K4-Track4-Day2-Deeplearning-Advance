@@ -1,0 +1,12 @@
+{
+  "exp_id": "B03",
+  "seed": 0,
+  "backbone": "swin_tiny_patch4_window7_224",
+  "params_m": 27.526275,
+  "gmacs": 4.489805568,
+  "best_epoch": 10,
+  "best_val_macro_f1": 0.957325551809567,
+  "total_train_time_s": 792.0866079330444,
+  "time_per_epoch_s": 79.20866079330445,
+  "test_metrics": null
+}

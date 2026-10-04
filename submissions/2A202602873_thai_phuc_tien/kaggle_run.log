@@ -1,0 +1,329 @@
+[{"stream_name":"stderr","time":9.589274491,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":9.589318009,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":11.055273321,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.055327738,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.055334584,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.055339225,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":11.844595263,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.844621618,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.844626461,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.844643695,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":17.107323825,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.6/2.6 MB 29.6 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":17.309380913,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.6/2.6 MB 29.6 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":47.701155363,"data":"RUNTIME {'python': '3.13.15', 'torch': '2.11.0+cu128', 'timm': '1.0.24', 'gpu': 'Tesla T4', 'cuda': '12.8', 'epochs': 10, 'batch_size': 32, 'started_utc': '2026-10-04T05:32:23Z'}\n"}
+,{"stream_name":"stdout","time":48.089440199,"data":"Sun Oct  4 05:32:23 2026       \n"}
+,{"stream_name":"stdout","time":48.089470596,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":48.08947653,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":48.089481749,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":48.089486474,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":48.089490697,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":48.089494933,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":48.089498992,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":48.089504793,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":48.089513094,"data":"| N/A   43C    P8              9W /   70W |       3MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":48.089516181,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":48.089529957,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":48.0895324,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":48.089534577,"data":"| N/A   40C    P8             10W /   70W |       3MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":48.089536842,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":48.089538999,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":48.089541229,"data":"\n"}
+,{"stream_name":"stdout","time":48.089543278,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":48.089545646,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":48.089548644,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":48.089569809,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":48.089573896,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":48.089578014,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":48.089583153,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":48.089587012,"data":"\n"}
+,{"stream_name":"stdout","time":175.350339645,"data":"SPLIT_CHECKS {'n': {'train': 10501, 'val': 3501, 'test': 3507, 'total': 17509}, 'per_class': {'train': {0: 675, 1: 637, 2: 618, 3: 613, 4: 637, 5: 605, 6: 644, 7: 609, 8: 5463}, 'val': {0: 225, 1: 213, 2: 206, 3: 204, 4: 212, 5: 202, 6: 215, 7: 203, 8: 1821}, 'test': {0: 226, 1: 213, 2: 207, 3: 205, 4: 213, 5: 202, 6: 215, 7: 204, 8: 1822}}, 'overlap': {'train_val': 0, 'train_test': 0, 'val_test': 0}, 'csv_sha256': {'train_subset0.csv': 'a2e63f561a545837c8cabaa276a957ccf1293ec985c9d8fbc49d67b4fd5abdb2', 'test_subset0.csv': 'fb212793b988bc0455aae2e48cb9eb3168014c2f47fbdb93f5f1e284e0974f75', 'labels.csv': '6fb95b89fd9d384f94e185a5cab6c5da7c987649399c90618ecc60acfb0112eb', 'val_subset0.csv': '1fa70a03a68def06c921a1dd7f0b53e96490f6dfad51d7d423bb145161ebc478'}}\n"}
+,{"stream_name":"stdout","time":185.316425921,"data":"START B01 0 resnet50\n"}
+,{"stream_name":"stdout","time":328.970459344,"data":"Epoch 01/10 | Train Loss: 1.5592 | Val Loss: 1.1119 | Val F1: 0.3407 | Val Top1: 0.6161\n"}
+,{"stream_name":"stdout","time":381.769708366,"data":"Epoch 02/10 | Train Loss: 0.8724 | Val Loss: 0.7051 | Val F1: 0.6521 | Val Top1: 0.7524\n"}
+,{"stream_name":"stdout","time":434.193584226,"data":"Epoch 03/10 | Train Loss: 0.6420 | Val Loss: 0.5550 | Val F1: 0.7400 | Val Top1: 0.8098\n"}
+,{"stream_name":"stdout","time":486.878770838,"data":"Epoch 04/10 | Train Loss: 0.5386 | Val Loss: 0.4805 | Val F1: 0.7772 | Val Top1: 0.8352\n"}
+,{"stream_name":"stdout","time":539.359827636,"data":"Epoch 05/10 | Train Loss: 0.4826 | Val Loss: 0.4712 | Val F1: 0.7772 | Val Top1: 0.8346\n"}
+,{"stream_name":"stdout","time":591.960998429,"data":"Epoch 06/10 | Train Loss: 0.4411 | Val Loss: 0.4229 | Val F1: 0.8047 | Val Top1: 0.8543\n"}
+,{"stream_name":"stdout","time":644.762832511,"data":"Epoch 07/10 | Train Loss: 0.4105 | Val Loss: 0.4186 | Val F1: 0.8082 | Val Top1: 0.8603\n"}
+,{"stream_name":"stdout","time":697.393767205,"data":"Epoch 08/10 | Train Loss: 0.3980 | Val Loss: 0.4241 | Val F1: 0.8061 | Val Top1: 0.8566\n"}
+,{"stream_name":"stdout","time":750.047828677,"data":"Epoch 09/10 | Train Loss: 0.4043 | Val Loss: 0.4037 | Val F1: 0.8173 | Val Top1: 0.8652\n"}
+,{"stream_name":"stdout","time":802.734094051,"data":"Epoch 10/10 | Train Loss: 0.3918 | Val Loss: 0.4253 | Val F1: 0.8059 | Val Top1: 0.8572\n"}
+,{"stream_name":"stdout","time":815.282072726,"data":"PROGRESS {'Backbones': 1, 'Training': 0, 'Inference': 0, 'Final': 0, 'PerClass': 0, 'Latency': 1, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":815.282938793,"data":"START B02 0 convnext_tiny\n"}
+,{"stream_name":"stderr","time":863.504888527,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":863.504923893,"data":"\n"}
+,{"stream_name":"stderr","time":863.504934397,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":945.485085768,"data":"Epoch 01/10 | Train Loss: 0.7394 | Val Loss: 0.3747 | Val F1: 0.8304 | Val Top1: 0.8763\n"}
+,{"stream_name":"stdout","time":1009.23067212,"data":"Epoch 02/10 | Train Loss: 0.3562 | Val Loss: 0.2424 | Val F1: 0.9074 | Val Top1: 0.9235\n"}
+,{"stream_name":"stdout","time":1072.54774085,"data":"Epoch 03/10 | Train Loss: 0.2466 | Val Loss: 0.2143 | Val F1: 0.8994 | Val Top1: 0.9280\n"}
+,{"stream_name":"stdout","time":1144.773943013,"data":"Epoch 04/10 | Train Loss: 0.2044 | Val Loss: 0.2022 | Val F1: 0.9197 | Val Top1: 0.9403\n"}
+,{"stream_name":"stdout","time":1239.238081216,"data":"Epoch 05/10 | Train Loss: 0.1528 | Val Loss: 0.1237 | Val F1: 0.9525 | Val Top1: 0.9629\n"}
+,{"stream_name":"stdout","time":1338.074171507,"data":"Epoch 06/10 | Train Loss: 0.1199 | Val Loss: 0.1073 | Val F1: 0.9593 | Val Top1: 0.9692\n"}
+,{"stream_name":"stdout","time":1424.686770684,"data":"Epoch 07/10 | Train Loss: 0.0875 | Val Loss: 0.1144 | Val F1: 0.9523 | Val Top1: 0.9640\n"}
+,{"stream_name":"stdout","time":1500.078048259,"data":"Epoch 08/10 | Train Loss: 0.0633 | Val Loss: 0.1151 | Val F1: 0.9557 | Val Top1: 0.9663\n"}
+,{"stream_name":"stdout","time":1584.136409544,"data":"Epoch 09/10 | Train Loss: 0.0459 | Val Loss: 0.1030 | Val F1: 0.9626 | Val Top1: 0.9720\n"}
+,{"stream_name":"stdout","time":1703.154957818,"data":"Epoch 10/10 | Train Loss: 0.0406 | Val Loss: 0.1007 | Val F1: 0.9639 | Val Top1: 0.9726\n"}
+,{"stream_name":"stdout","time":1734.932557868,"data":"PROGRESS {'Backbones': 2, 'Training': 0, 'Inference': 0, 'Final': 0, 'PerClass': 0, 'Latency': 2, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":1734.933598593,"data":"START B03 0 swin_tiny_patch4_window7_224\n"}
+,{"stream_name":"stdout","time":1926.528264803,"data":"Epoch 01/10 | Train Loss: 0.8971 | Val Loss: 0.3458 | Val F1: 0.8474 | Val Top1: 0.8837\n"}
+,{"stream_name":"stdout","time":2005.730689282,"data":"Epoch 02/10 | Train Loss: 0.3802 | Val Loss: 0.2704 | Val F1: 0.8920 | Val Top1: 0.9175\n"}
+,{"stream_name":"stdout","time":2083.772750026,"data":"Epoch 03/10 | Train Loss: 0.2814 | Val Loss: 0.2272 | Val F1: 0.9084 | Val Top1: 0.9289\n"}
+,{"stream_name":"stdout","time":2162.403702038,"data":"Epoch 04/10 | Train Loss: 0.2146 | Val Loss: 0.2188 | Val F1: 0.9092 | Val Top1: 0.9357\n"}
+,{"stream_name":"stdout","time":2242.280245939,"data":"Epoch 05/10 | Train Loss: 0.1778 | Val Loss: 0.2067 | Val F1: 0.9134 | Val Top1: 0.9360\n"}
+,{"stream_name":"stdout","time":2324.349807094,"data":"Epoch 06/10 | Train Loss: 0.1387 | Val Loss: 0.1365 | Val F1: 0.9448 | Val Top1: 0.9589\n"}
+,{"stream_name":"stdout","time":2403.507552809,"data":"Epoch 07/10 | Train Loss: 0.1155 | Val Loss: 0.1248 | Val F1: 0.9457 | Val Top1: 0.9592\n"}
+,{"stream_name":"stdout","time":2481.324407634,"data":"Epoch 08/10 | Train Loss: 0.0792 | Val Loss: 0.1206 | Val F1: 0.9549 | Val Top1: 0.9672\n"}
+,{"stream_name":"stdout","time":2560.784028072,"data":"Epoch 09/10 | Train Loss: 0.0745 | Val Loss: 0.1174 | Val F1: 0.9555 | Val Top1: 0.9674\n"}
+,{"stream_name":"stdout","time":2639.48408309,"data":"Epoch 10/10 | Train Loss: 0.0613 | Val Loss: 0.1122 | Val F1: 0.9573 | Val Top1: 0.9683\n"}
+,{"stream_name":"stdout","time":2657.82867363,"data":"PROGRESS {'Backbones': 3, 'Training': 0, 'Inference': 0, 'Final': 0, 'PerClass': 0, 'Latency': 3, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":2657.829817342,"data":"START B04 0 efficientnet_b0\n"}
+,{"stream_name":"stdout","time":2819.303230895,"data":"Epoch 01/10 | Train Loss: 1.9878 | Val Loss: 1.3860 | Val F1: 0.4190 | Val Top1: 0.5498\n"}
+,{"stream_name":"stdout","time":2883.420640255,"data":"Epoch 02/10 | Train Loss: 0.7647 | Val Loss: 0.9124 | Val F1: 0.6062 | Val Top1: 0.7064\n"}
+,{"stream_name":"stdout","time":2938.107635087,"data":"Epoch 03/10 | Train Loss: 0.5274 | Val Loss: 0.7261 | Val F1: 0.6804 | Val Top1: 0.7601\n"}
+,{"stream_name":"stdout","time":2997.315581052,"data":"Epoch 04/10 | Train Loss: 0.4072 | Val Loss: 0.6651 | Val F1: 0.7041 | Val Top1: 0.7698\n"}
+,{"stream_name":"stdout","time":3062.892672011,"data":"Epoch 05/10 | Train Loss: 0.3400 | Val Loss: 0.5367 | Val F1: 0.7660 | Val Top1: 0.8229\n"}
+,{"stream_name":"stdout","time":3122.24778624,"data":"Epoch 06/10 | Train Loss: 0.2878 | Val Loss: 0.5370 | Val F1: 0.7664 | Val Top1: 0.8243\n"}
+,{"stream_name":"stdout","time":3181.243362215,"data":"Epoch 07/10 | Train Loss: 0.2605 | Val Loss: 0.4648 | Val F1: 0.7912 | Val Top1: 0.8426\n"}
+,{"stream_name":"stdout","time":3260.511120448,"data":"Epoch 08/10 | Train Loss: 0.2363 | Val Loss: 0.4477 | Val F1: 0.8016 | Val Top1: 0.8515\n"}
+,{"stream_name":"stdout","time":3332.005774603,"data":"Epoch 09/10 | Train Loss: 0.2339 | Val Loss: 0.4555 | Val F1: 0.7954 | Val Top1: 0.8498\n"}
+,{"stream_name":"stdout","time":3398.77564006,"data":"Epoch 10/10 | Train Loss: 0.2236 | Val Loss: 0.4122 | Val F1: 0.8159 | Val Top1: 0.8629\n"}
+,{"stream_name":"stdout","time":3413.950644516,"data":"PROGRESS {'Backbones': 4, 'Training': 0, 'Inference': 0, 'Final': 0, 'PerClass': 0, 'Latency': 4, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":3413.951578386,"data":"START B05 0 mobilenetv3_large_100\n"}
+,{"stream_name":"stdout","time":3610.709215586,"data":"Epoch 01/10 | Train Loss: 1.7060 | Val Loss: 1.3884 | Val F1: 0.3792 | Val Top1: 0.5558\n"}
+,{"stream_name":"stdout","time":3673.994875112,"data":"Epoch 02/10 | Train Loss: 0.7332 | Val Loss: 1.3598 | Val F1: 0.4466 | Val Top1: 0.5727\n"}
+,{"stream_name":"stdout","time":3731.841016528,"data":"Epoch 03/10 | Train Loss: 0.4997 | Val Loss: 1.1357 | Val F1: 0.4876 | Val Top1: 0.6412\n"}
+,{"stream_name":"stdout","time":3787.61952654,"data":"Epoch 04/10 | Train Loss: 0.4021 | Val Loss: 0.8728 | Val F1: 0.5968 | Val Top1: 0.7184\n"}
+,{"stream_name":"stdout","time":3843.891544725,"data":"Epoch 05/10 | Train Loss: 0.3255 | Val Loss: 0.7840 | Val F1: 0.6221 | Val Top1: 0.7281\n"}
+,{"stream_name":"stdout","time":3894.663357134,"data":"Epoch 06/10 | Train Loss: 0.2902 | Val Loss: 0.6748 | Val F1: 0.6800 | Val Top1: 0.7692\n"}
+,{"stream_name":"stdout","time":3964.424300007,"data":"Epoch 07/10 | Train Loss: 0.2572 | Val Loss: 0.6465 | Val F1: 0.7050 | Val Top1: 0.7821\n"}
+,{"stream_name":"stdout","time":4035.076232458,"data":"Epoch 08/10 | Train Loss: 0.2321 | Val Loss: 0.6216 | Val F1: 0.7135 | Val Top1: 0.7915\n"}
+,{"stream_name":"stdout","time":4095.859505188,"data":"Epoch 09/10 | Train Loss: 0.2235 | Val Loss: 0.6599 | Val F1: 0.6912 | Val Top1: 0.7763\n"}
+,{"stream_name":"stdout","time":4156.762188292,"data":"Epoch 10/10 | Train Loss: 0.2158 | Val Loss: 0.6411 | Val F1: 0.6994 | Val Top1: 0.7809\n"}
+,{"stream_name":"stdout","time":4172.615535866,"data":"PROGRESS {'Backbones': 5, 'Training': 0, 'Inference': 0, 'Final': 0, 'PerClass': 0, 'Latency': 5, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":4172.616389365,"data":"START T00 0 convnext_tiny\n"}
+,{"stream_name":"stdout","time":4313.426093205,"data":"Epoch 01/10 | Train Loss: 0.7394 | Val Loss: 0.3747 | Val F1: 0.8304 | Val Top1: 0.8763\n"}
+,{"stream_name":"stdout","time":4379.083326783,"data":"Epoch 02/10 | Train Loss: 0.3562 | Val Loss: 0.2424 | Val F1: 0.9074 | Val Top1: 0.9235\n"}
+,{"stream_name":"stdout","time":4442.894396162,"data":"Epoch 03/10 | Train Loss: 0.2466 | Val Loss: 0.2143 | Val F1: 0.8994 | Val Top1: 0.9280\n"}
+,{"stream_name":"stdout","time":4508.032586325,"data":"Epoch 04/10 | Train Loss: 0.2044 | Val Loss: 0.2022 | Val F1: 0.9197 | Val Top1: 0.9403\n"}
+,{"stream_name":"stdout","time":4579.207185891,"data":"Epoch 05/10 | Train Loss: 0.1528 | Val Loss: 0.1237 | Val F1: 0.9525 | Val Top1: 0.9629\n"}
+,{"stream_name":"stdout","time":4643.939135629,"data":"Epoch 06/10 | Train Loss: 0.1199 | Val Loss: 0.1073 | Val F1: 0.9593 | Val Top1: 0.9692\n"}
+,{"stream_name":"stdout","time":4708.70329042,"data":"Epoch 07/10 | Train Loss: 0.0875 | Val Loss: 0.1144 | Val F1: 0.9523 | Val Top1: 0.9640\n"}
+,{"stream_name":"stdout","time":4776.808488912,"data":"Epoch 08/10 | Train Loss: 0.0633 | Val Loss: 0.1151 | Val F1: 0.9557 | Val Top1: 0.9663\n"}
+,{"stream_name":"stdout","time":4841.493327493,"data":"Epoch 09/10 | Train Loss: 0.0459 | Val Loss: 0.1030 | Val F1: 0.9626 | Val Top1: 0.9720\n"}
+,{"stream_name":"stdout","time":4905.802976263,"data":"Epoch 10/10 | Train Loss: 0.0406 | Val Loss: 0.1007 | Val F1: 0.9639 | Val Top1: 0.9726\n"}
+,{"stream_name":"stdout","time":4921.004021352,"data":"PROGRESS {'Backbones': 5, 'Training': 1, 'Inference': 0, 'Final': 0, 'PerClass': 0, 'Latency': 5, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":4921.004937984,"data":"START T01 0 convnext_tiny\n"}
+,{"stream_name":"stdout","time":5087.115522117,"data":"Epoch 01/10 | Train Loss: 1.1345 | Val Loss: 0.6179 | Val F1: 0.7374 | Val Top1: 0.8001\n"}
+,{"stream_name":"stdout","time":5151.851409573,"data":"Epoch 02/10 | Train Loss: 0.5694 | Val Loss: 0.4852 | Val F1: 0.8024 | Val Top1: 0.8429\n"}
+,{"stream_name":"stdout","time":5215.831479162,"data":"Epoch 03/10 | Train Loss: 0.4763 | Val Loss: 0.4469 | Val F1: 0.8080 | Val Top1: 0.8518\n"}
+,{"stream_name":"stdout","time":5280.509510043,"data":"Epoch 04/10 | Train Loss: 0.4307 | Val Loss: 0.4075 | Val F1: 0.8301 | Val Top1: 0.8672\n"}
+,{"stream_name":"stdout","time":5340.935917826,"data":"Epoch 05/10 | Train Loss: 0.4046 | Val Loss: 0.3897 | Val F1: 0.8408 | Val Top1: 0.8740\n"}
+,{"stream_name":"stdout","time":5407.709609269,"data":"Epoch 06/10 | Train Loss: 0.3788 | Val Loss: 0.3758 | Val F1: 0.8420 | Val Top1: 0.8738\n"}
+,{"stream_name":"stdout","time":5470.902908068,"data":"Epoch 07/10 | Train Loss: 0.3686 | Val Loss: 0.3887 | Val F1: 0.8411 | Val Top1: 0.8766\n"}
+,{"stream_name":"stdout","time":5533.628289028,"data":"Epoch 08/10 | Train Loss: 0.3490 | Val Loss: 0.3701 | Val F1: 0.8479 | Val Top1: 0.8797\n"}
+,{"stream_name":"stdout","time":5591.447940987,"data":"Epoch 09/10 | Train Loss: 0.3523 | Val Loss: 0.3653 | Val F1: 0.8510 | Val Top1: 0.8812\n"}
+,{"stream_name":"stdout","time":5649.460442995,"data":"Epoch 10/10 | Train Loss: 0.3477 | Val Loss: 0.3662 | Val F1: 0.8506 | Val Top1: 0.8812\n"}
+,{"stream_name":"stdout","time":5666.29479305,"data":"PROGRESS {'Backbones': 5, 'Training': 2, 'Inference': 0, 'Final': 0, 'PerClass': 0, 'Latency': 5, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":5666.295651066,"data":"START T02 0 convnext_tiny\n"}
+,{"stream_name":"stdout","time":5826.646696877,"data":"Epoch 01/10 | Train Loss: 1.6893 | Val Loss: 1.6455 | Val F1: 0.0923 | Val Top1: 0.5241\n"}
+,{"stream_name":"stdout","time":5893.44868507,"data":"Epoch 02/10 | Train Loss: 1.5814 | Val Loss: 1.6251 | Val F1: 0.1536 | Val Top1: 0.4422\n"}
+,{"stream_name":"stdout","time":5962.893204339,"data":"Epoch 03/10 | Train Loss: 1.5072 | Val Loss: 1.4370 | Val F1: 0.1603 | Val Top1: 0.5390\n"}
+,{"stream_name":"stdout","time":6028.667391905,"data":"Epoch 04/10 | Train Loss: 1.4507 | Val Loss: 1.4236 | Val F1: 0.2074 | Val Top1: 0.5316\n"}
+,{"stream_name":"stdout","time":6094.180287659,"data":"Epoch 05/10 | Train Loss: 1.3637 | Val Loss: 1.3266 | Val F1: 0.2126 | Val Top1: 0.5496\n"}
+,{"stream_name":"stdout","time":6161.139321689,"data":"Epoch 06/10 | Train Loss: 1.2929 | Val Loss: 1.2935 | Val F1: 0.3140 | Val Top1: 0.5641\n"}
+,{"stream_name":"stdout","time":6230.526003085,"data":"Epoch 07/10 | Train Loss: 1.2311 | Val Loss: 1.2837 | Val F1: 0.2712 | Val Top1: 0.5713\n"}
+,{"stream_name":"stdout","time":6296.425298984,"data":"Epoch 08/10 | Train Loss: 1.1866 | Val Loss: 1.2487 | Val F1: 0.3394 | Val Top1: 0.5753\n"}
+,{"stream_name":"stdout","time":6360.405446196,"data":"Epoch 09/10 | Train Loss: 1.1614 | Val Loss: 1.2367 | Val F1: 0.3600 | Val Top1: 0.5798\n"}
+,{"stream_name":"stdout","time":6425.458572976,"data":"Epoch 10/10 | Train Loss: 1.1410 | Val Loss: 1.2261 | Val F1: 0.3594 | Val Top1: 0.5815\n"}
+,{"stream_name":"stdout","time":6440.383574913,"data":"PROGRESS {'Backbones': 5, 'Training': 3, 'Inference': 0, 'Final': 0, 'PerClass': 0, 'Latency': 5, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":6440.387926889,"data":"START T03 0 convnext_tiny\n"}
+,{"stream_name":"stdout","time":6605.696982851,"data":"Epoch 01/10 | Train Loss: 0.7548 | Val Loss: 0.3545 | Val F1: 0.8521 | Val Top1: 0.8823\n"}
+,{"stream_name":"stdout","time":6678.350694251,"data":"Epoch 02/10 | Train Loss: 0.3617 | Val Loss: 0.2752 | Val F1: 0.8900 | Val Top1: 0.9140\n"}
+,{"stream_name":"stdout","time":6749.831153745,"data":"Epoch 03/10 | Train Loss: 0.2604 | Val Loss: 0.2166 | Val F1: 0.9019 | Val Top1: 0.9243\n"}
+,{"stream_name":"stdout","time":6823.679640372,"data":"Epoch 04/10 | Train Loss: 0.2104 | Val Loss: 0.1288 | Val F1: 0.9487 | Val Top1: 0.9606\n"}
+,{"stream_name":"stdout","time":6893.539002073,"data":"Epoch 05/10 | Train Loss: 0.1801 | Val Loss: 0.1516 | Val F1: 0.9415 | Val Top1: 0.9532\n"}
+,{"stream_name":"stdout","time":6966.757768119,"data":"Epoch 06/10 | Train Loss: 0.1303 | Val Loss: 0.1601 | Val F1: 0.9412 | Val Top1: 0.9534\n"}
+,{"stream_name":"stdout","time":7035.264966305,"data":"Epoch 07/10 | Train Loss: 0.0940 | Val Loss: 0.1060 | Val F1: 0.9625 | Val Top1: 0.9714\n"}
+,{"stream_name":"stdout","time":7103.624007057,"data":"Epoch 08/10 | Train Loss: 0.0716 | Val Loss: 0.1017 | Val F1: 0.9638 | Val Top1: 0.9720\n"}
+,{"stream_name":"stdout","time":7170.570250161,"data":"Epoch 09/10 | Train Loss: 0.0568 | Val Loss: 0.0963 | Val F1: 0.9697 | Val Top1: 0.9769\n"}
+,{"stream_name":"stdout","time":7235.573735478,"data":"Epoch 10/10 | Train Loss: 0.0455 | Val Loss: 0.1010 | Val F1: 0.9651 | Val Top1: 0.9740\n"}
+,{"stream_name":"stdout","time":7250.419366586,"data":"PROGRESS {'Backbones': 5, 'Training': 4, 'Inference': 0, 'Final': 0, 'PerClass': 0, 'Latency': 5, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":7250.420320981,"data":"START T04 0 convnext_tiny\n"}
+,{"stream_name":"stdout","time":7394.697227406,"data":"Epoch 01/10 | Train Loss: 1.1713 | Val Loss: 0.3771 | Val F1: 0.8377 | Val Top1: 0.8780\n"}
+,{"stream_name":"stdout","time":7459.453800375,"data":"Epoch 02/10 | Train Loss: 0.8145 | Val Loss: 0.2526 | Val F1: 0.9064 | Val Top1: 0.9283\n"}
+,{"stream_name":"stdout","time":7525.555876834,"data":"Epoch 03/10 | Train Loss: 0.7337 | Val Loss: 0.1564 | Val F1: 0.9468 | Val Top1: 0.9566\n"}
+,{"stream_name":"stdout","time":7590.025559125,"data":"Epoch 04/10 | Train Loss: 0.6637 | Val Loss: 0.1801 | Val F1: 0.9361 | Val Top1: 0.9477\n"}
+,{"stream_name":"stdout","time":7656.852256078,"data":"Epoch 05/10 | Train Loss: 0.6137 | Val Loss: 0.2341 | Val F1: 0.9155 | Val Top1: 0.9252\n"}
+,{"stream_name":"stdout","time":7721.93411286,"data":"Epoch 06/10 | Train Loss: 0.5779 | Val Loss: 0.1270 | Val F1: 0.9567 | Val Top1: 0.9660\n"}
+,{"stream_name":"stdout","time":7789.543327311,"data":"Epoch 07/10 | Train Loss: 0.5257 | Val Loss: 0.1097 | Val F1: 0.9574 | Val Top1: 0.9660\n"}
+,{"stream_name":"stdout","time":7857.667826793,"data":"Epoch 08/10 | Train Loss: 0.5084 | Val Loss: 0.1074 | Val F1: 0.9600 | Val Top1: 0.9680\n"}
+,{"stream_name":"stdout","time":7923.927781026,"data":"Epoch 09/10 | Train Loss: 0.4916 | Val Loss: 0.0969 | Val F1: 0.9651 | Val Top1: 0.9726\n"}
+,{"stream_name":"stdout","time":7988.63030832,"data":"Epoch 10/10 | Train Loss: 0.4804 | Val Loss: 0.0938 | Val F1: 0.9671 | Val Top1: 0.9746\n"}
+,{"stream_name":"stdout","time":8003.738038573,"data":"PROGRESS {'Backbones': 5, 'Training': 5, 'Inference': 0, 'Final': 0, 'PerClass': 0, 'Latency': 5, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":8003.738947142,"data":"START T05 0 convnext_tiny\n"}
+,{"stream_name":"stdout","time":8172.198766444,"data":"Epoch 01/10 | Train Loss: 0.4809 | Val Loss: 0.2148 | Val F1: 0.8104 | Val Top1: 0.8460\n"}
+,{"stream_name":"stdout","time":8236.254112578,"data":"Epoch 02/10 | Train Loss: 0.1938 | Val Loss: 0.1495 | Val F1: 0.8800 | Val Top1: 0.8943\n"}
+,{"stream_name":"stdout","time":8305.134429442,"data":"Epoch 03/10 | Train Loss: 0.1236 | Val Loss: 0.0829 | Val F1: 0.9189 | Val Top1: 0.9357\n"}
+,{"stream_name":"stdout","time":8370.862749312,"data":"Epoch 04/10 | Train Loss: 0.0966 | Val Loss: 0.0945 | Val F1: 0.9129 | Val Top1: 0.9354\n"}
+,{"stream_name":"stdout","time":8441.449189559,"data":"Epoch 05/10 | Train Loss: 0.0776 | Val Loss: 0.0823 | Val F1: 0.9317 | Val Top1: 0.9429\n"}
+,{"stream_name":"stdout","time":8506.890602977,"data":"Epoch 06/10 | Train Loss: 0.0534 | Val Loss: 0.0641 | Val F1: 0.9501 | Val Top1: 0.9614\n"}
+,{"stream_name":"stdout","time":8575.678084742,"data":"Epoch 07/10 | Train Loss: 0.0446 | Val Loss: 0.0631 | Val F1: 0.9515 | Val Top1: 0.9637\n"}
+,{"stream_name":"stdout","time":8640.226685543,"data":"Epoch 08/10 | Train Loss: 0.0274 | Val Loss: 0.0478 | Val F1: 0.9697 | Val Top1: 0.9766\n"}
+,{"stream_name":"stdout","time":8704.836603561,"data":"Epoch 09/10 | Train Loss: 0.0235 | Val Loss: 0.0536 | Val F1: 0.9648 | Val Top1: 0.9732\n"}
+,{"stream_name":"stdout","time":8770.690477012,"data":"Epoch 10/10 | Train Loss: 0.0188 | Val Loss: 0.0523 | Val F1: 0.9637 | Val Top1: 0.9723\n"}
+,{"stream_name":"stdout","time":8786.020530125,"data":"PROGRESS {'Backbones': 5, 'Training': 6, 'Inference': 0, 'Final': 0, 'PerClass': 0, 'Latency': 5, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":8786.021347633,"data":"START T06 0 convnext_tiny\n"}
+,{"stream_name":"stdout","time":8948.077106519,"data":"Epoch 01/10 | Train Loss: 0.8783 | Val Loss: 0.7126 | Val F1: 0.6797 | Val Top1: 0.7686\n"}
+,{"stream_name":"stdout","time":9012.568737114,"data":"Epoch 02/10 | Train Loss: 0.4371 | Val Loss: 0.4753 | Val F1: 0.7382 | Val Top1: 0.7201\n"}
+,{"stream_name":"stdout","time":9078.480006531,"data":"Epoch 03/10 | Train Loss: 0.3019 | Val Loss: 0.2088 | Val F1: 0.8808 | Val Top1: 0.8906\n"}
+,{"stream_name":"stdout","time":9144.287226395,"data":"Epoch 04/10 | Train Loss: 0.2497 | Val Loss: 0.1680 | Val F1: 0.9310 | Val Top1: 0.9432\n"}
+,{"stream_name":"stdout","time":9208.131177701,"data":"Epoch 05/10 | Train Loss: 0.1846 | Val Loss: 0.1863 | Val F1: 0.8919 | Val Top1: 0.8957\n"}
+,{"stream_name":"stdout","time":9273.880956156,"data":"Epoch 06/10 | Train Loss: 0.1555 | Val Loss: 0.1774 | Val F1: 0.9183 | Val Top1: 0.9292\n"}
+,{"stream_name":"stdout","time":9340.584362093,"data":"Epoch 07/10 | Train Loss: 0.1071 | Val Loss: 0.1382 | Val F1: 0.9456 | Val Top1: 0.9560\n"}
+,{"stream_name":"stdout","time":9406.697489519,"data":"Epoch 08/10 | Train Loss: 0.0762 | Val Loss: 0.1209 | Val F1: 0.9626 | Val Top1: 0.9709\n"}
+,{"stream_name":"stdout","time":9471.778078572,"data":"Epoch 09/10 | Train Loss: 0.0629 | Val Loss: 0.1207 | Val F1: 0.9593 | Val Top1: 0.9674\n"}
+,{"stream_name":"stdout","time":9537.38141892,"data":"Epoch 10/10 | Train Loss: 0.0538 | Val Loss: 0.1201 | Val F1: 0.9622 | Val Top1: 0.9700\n"}
+,{"stream_name":"stdout","time":9552.868616809,"data":"PROGRESS {'Backbones': 5, 'Training': 7, 'Inference': 0, 'Final': 0, 'PerClass': 0, 'Latency': 5, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":9552.86943007,"data":"START T07 0 convnext_tiny\n"}
+,{"stream_name":"stdout","time":9744.81139661,"data":"Epoch 01/10 | Train Loss: 0.4781 | Val Loss: 0.1909 | Val F1: 0.8244 | Val Top1: 0.8609\n"}
+,{"stream_name":"stdout","time":9814.283182864,"data":"Epoch 02/10 | Train Loss: 0.1854 | Val Loss: 0.1440 | Val F1: 0.8906 | Val Top1: 0.9046\n"}
+,{"stream_name":"stdout","time":9878.626224649,"data":"Epoch 03/10 | Train Loss: 0.1376 | Val Loss: 0.1006 | Val F1: 0.9129 | Val Top1: 0.9340\n"}
+,{"stream_name":"stdout","time":9946.399116425,"data":"Epoch 04/10 | Train Loss: 0.1143 | Val Loss: 0.0774 | Val F1: 0.9390 | Val Top1: 0.9503\n"}
+,{"stream_name":"stdout","time":10014.03865719,"data":"Epoch 05/10 | Train Loss: 0.0864 | Val Loss: 0.0640 | Val F1: 0.9455 | Val Top1: 0.9569\n"}
+,{"stream_name":"stdout","time":10084.055685098,"data":"Epoch 06/10 | Train Loss: 0.0599 | Val Loss: 0.1093 | Val F1: 0.9078 | Val Top1: 0.9263\n"}
+,{"stream_name":"stdout","time":10153.426461389,"data":"Epoch 07/10 | Train Loss: 0.0444 | Val Loss: 0.0566 | Val F1: 0.9543 | Val Top1: 0.9629\n"}
+,{"stream_name":"stdout","time":10219.766675398,"data":"Epoch 08/10 | Train Loss: 0.0327 | Val Loss: 0.0494 | Val F1: 0.9604 | Val Top1: 0.9692\n"}
+,{"stream_name":"stdout","time":10289.140510581,"data":"Epoch 09/10 | Train Loss: 0.0253 | Val Loss: 0.0468 | Val F1: 0.9620 | Val Top1: 0.9697\n"}
+,{"stream_name":"stdout","time":10357.508592754,"data":"Epoch 10/10 | Train Loss: 0.0207 | Val Loss: 0.0499 | Val F1: 0.9605 | Val Top1: 0.9683\n"}
+,{"stream_name":"stdout","time":10372.372101845,"data":"PROGRESS {'Backbones': 5, 'Training': 8, 'Inference': 0, 'Final': 0, 'PerClass': 0, 'Latency': 5, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":10417.886941635,"data":"PROGRESS {'Backbones': 5, 'Training': 8, 'Inference': 1, 'Final': 0, 'PerClass': 0, 'Latency': 6, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":10419.829481284,"data":"PROGRESS {'Backbones': 5, 'Training': 8, 'Inference': 2, 'Final': 0, 'PerClass': 0, 'Latency': 7, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":10421.82273514,"data":"PROGRESS {'Backbones': 5, 'Training': 8, 'Inference': 3, 'Final': 0, 'PerClass': 0, 'Latency': 8, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":10422.537688885,"data":"PROGRESS {'Backbones': 5, 'Training': 8, 'Inference': 4, 'Final': 0, 'PerClass': 0, 'Latency': 9, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":10423.253721258,"data":"PROGRESS {'Backbones': 5, 'Training': 8, 'Inference': 5, 'Final': 0, 'PerClass': 0, 'Latency': 10, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":10436.94430068,"data":"LOCKED_BEFORE_TEST {'backbone': 'convnext_tiny', 'recipe_id': 'T05', 'recipe': {'loss': 'focal'}, 'inference_method': 'I01', 'selection': 'val macro-F1 descending; ECE ascending; p95 ascending', 'seeds': [0, 1, 2]}\n"}
+,{"stream_name":"stdout","time":10437.032172338,"data":"START T00 0 convnext_tiny\n"}
+,{"stream_name":"stdout","time":10575.119060574,"data":"Epoch 01/10 | Train Loss: 0.7394 | Val Loss: 0.3747 | Val F1: 0.8304 | Val Top1: 0.8763\n"}
+,{"stream_name":"stdout","time":10640.512354659,"data":"Epoch 02/10 | Train Loss: 0.3562 | Val Loss: 0.2424 | Val F1: 0.9074 | Val Top1: 0.9235\n"}
+,{"stream_name":"stdout","time":10704.801998125,"data":"Epoch 03/10 | Train Loss: 0.2466 | Val Loss: 0.2143 | Val F1: 0.8994 | Val Top1: 0.9280\n"}
+,{"stream_name":"stdout","time":10768.544476857,"data":"Epoch 04/10 | Train Loss: 0.2044 | Val Loss: 0.2022 | Val F1: 0.9197 | Val Top1: 0.9403\n"}
+,{"stream_name":"stdout","time":10832.657741458,"data":"Epoch 05/10 | Train Loss: 0.1528 | Val Loss: 0.1237 | Val F1: 0.9525 | Val Top1: 0.9629\n"}
+,{"stream_name":"stdout","time":10900.480353894,"data":"Epoch 06/10 | Train Loss: 0.1199 | Val Loss: 0.1073 | Val F1: 0.9593 | Val Top1: 0.9692\n"}
+,{"stream_name":"stdout","time":10963.809049585,"data":"Epoch 07/10 | Train Loss: 0.0875 | Val Loss: 0.1144 | Val F1: 0.9523 | Val Top1: 0.9640\n"}
+,{"stream_name":"stdout","time":11027.85752467,"data":"Epoch 08/10 | Train Loss: 0.0633 | Val Loss: 0.1151 | Val F1: 0.9557 | Val Top1: 0.9663\n"}
+,{"stream_name":"stdout","time":11091.73163844,"data":"Epoch 09/10 | Train Loss: 0.0459 | Val Loss: 0.1030 | Val F1: 0.9626 | Val Top1: 0.9720\n"}
+,{"stream_name":"stdout","time":11155.203745728,"data":"Epoch 10/10 | Train Loss: 0.0406 | Val Loss: 0.1007 | Val F1: 0.9639 | Val Top1: 0.9726\n"}
+,{"stream_name":"stdout","time":11262.436445634,"data":"PROGRESS {'Backbones': 5, 'Training': 8, 'Inference': 5, 'Final': 1, 'PerClass': 9, 'Latency': 11, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":11262.437472537,"data":"START T00 1 convnext_tiny\n"}
+,{"stream_name":"stdout","time":11388.20167338,"data":"Epoch 01/10 | Train Loss: 0.7859 | Val Loss: 0.4248 | Val F1: 0.7788 | Val Top1: 0.8500\n"}
+,{"stream_name":"stdout","time":11454.35042686,"data":"Epoch 02/10 | Train Loss: 0.3420 | Val Loss: 0.2932 | Val F1: 0.8796 | Val Top1: 0.9066\n"}
+,{"stream_name":"stdout","time":11518.4448103,"data":"Epoch 03/10 | Train Loss: 0.2672 | Val Loss: 0.2140 | Val F1: 0.9242 | Val Top1: 0.9374\n"}
+,{"stream_name":"stdout","time":11616.009166286,"data":"Epoch 04/10 | Train Loss: 0.2016 | Val Loss: 0.1993 | Val F1: 0.9138 | Val Top1: 0.9349\n"}
+,{"stream_name":"stdout","time":11683.418531205,"data":"Epoch 05/10 | Train Loss: 0.1645 | Val Loss: 0.1406 | Val F1: 0.9439 | Val Top1: 0.9569\n"}
+,{"stream_name":"stdout","time":11747.548970812,"data":"Epoch 06/10 | Train Loss: 0.1113 | Val Loss: 0.2601 | Val F1: 0.8987 | Val Top1: 0.9257\n"}
+,{"stream_name":"stdout","time":11815.6394935,"data":"Epoch 07/10 | Train Loss: 0.0959 | Val Loss: 0.1123 | Val F1: 0.9548 | Val Top1: 0.9657\n"}
+,{"stream_name":"stdout","time":11880.262813112,"data":"Epoch 08/10 | Train Loss: 0.0675 | Val Loss: 0.1059 | Val F1: 0.9621 | Val Top1: 0.9712\n"}
+,{"stream_name":"stdout","time":11948.100400831,"data":"Epoch 09/10 | Train Loss: 0.0455 | Val Loss: 0.1065 | Val F1: 0.9591 | Val Top1: 0.9689\n"}
+,{"stream_name":"stdout","time":12015.222661121,"data":"Epoch 10/10 | Train Loss: 0.0374 | Val Loss: 0.1014 | Val F1: 0.9622 | Val Top1: 0.9709\n"}
+,{"stream_name":"stdout","time":12054.788381033,"data":"PROGRESS {'Backbones': 5, 'Training': 8, 'Inference': 5, 'Final': 2, 'PerClass': 18, 'Latency': 11, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":12054.789311094,"data":"START T00 2 convnext_tiny\n"}
+,{"stream_name":"stdout","time":12170.529196027,"data":"Epoch 01/10 | Train Loss: 0.7561 | Val Loss: 0.4193 | Val F1: 0.8199 | Val Top1: 0.8560\n"}
+,{"stream_name":"stdout","time":12235.739246088,"data":"Epoch 02/10 | Train Loss: 0.3511 | Val Loss: 0.1875 | Val F1: 0.9192 | Val Top1: 0.9383\n"}
+,{"stream_name":"stdout","time":12302.565421639,"data":"Epoch 03/10 | Train Loss: 0.2621 | Val Loss: 0.1927 | Val F1: 0.9254 | Val Top1: 0.9417\n"}
+,{"stream_name":"stdout","time":12371.49438826,"data":"Epoch 04/10 | Train Loss: 0.1987 | Val Loss: 0.1331 | Val F1: 0.9468 | Val Top1: 0.9592\n"}
+,{"stream_name":"stdout","time":12436.398417219,"data":"Epoch 05/10 | Train Loss: 0.1602 | Val Loss: 0.2096 | Val F1: 0.9076 | Val Top1: 0.9309\n"}
+,{"stream_name":"stdout","time":12500.088007902,"data":"Epoch 06/10 | Train Loss: 0.1199 | Val Loss: 0.1413 | Val F1: 0.9435 | Val Top1: 0.9563\n"}
+,{"stream_name":"stdout","time":12565.907230449,"data":"Epoch 07/10 | Train Loss: 0.0824 | Val Loss: 0.1079 | Val F1: 0.9587 | Val Top1: 0.9683\n"}
+,{"stream_name":"stdout","time":12637.416433677,"data":"Epoch 08/10 | Train Loss: 0.0587 | Val Loss: 0.1055 | Val F1: 0.9600 | Val Top1: 0.9697\n"}
+,{"stream_name":"stdout","time":12702.678544738,"data":"Epoch 09/10 | Train Loss: 0.0475 | Val Loss: 0.0932 | Val F1: 0.9671 | Val Top1: 0.9757\n"}
+,{"stream_name":"stdout","time":12766.328475998,"data":"Epoch 10/10 | Train Loss: 0.0451 | Val Loss: 0.0891 | Val F1: 0.9688 | Val Top1: 0.9760\n"}
+,{"stream_name":"stdout","time":12805.616664889,"data":"PROGRESS {'Backbones': 5, 'Training': 8, 'Inference': 5, 'Final': 3, 'PerClass': 27, 'Latency': 11, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":12805.617839538,"data":"START F01 0 convnext_tiny\n"}
+,{"stream_name":"stdout","time":12915.665687642,"data":"Epoch 01/10 | Train Loss: 0.4809 | Val Loss: 0.2148 | Val F1: 0.8104 | Val Top1: 0.8460\n"}
+,{"stream_name":"stdout","time":12980.495398927,"data":"Epoch 02/10 | Train Loss: 0.1938 | Val Loss: 0.1495 | Val F1: 0.8800 | Val Top1: 0.8943\n"}
+,{"stream_name":"stdout","time":13046.502496911,"data":"Epoch 03/10 | Train Loss: 0.1236 | Val Loss: 0.0829 | Val F1: 0.9189 | Val Top1: 0.9357\n"}
+,{"stream_name":"stdout","time":13112.003034165,"data":"Epoch 04/10 | Train Loss: 0.0966 | Val Loss: 0.0945 | Val F1: 0.9129 | Val Top1: 0.9354\n"}
+,{"stream_name":"stdout","time":13176.386027798,"data":"Epoch 05/10 | Train Loss: 0.0776 | Val Loss: 0.0823 | Val F1: 0.9317 | Val Top1: 0.9429\n"}
+,{"stream_name":"stdout","time":13240.387079577,"data":"Epoch 06/10 | Train Loss: 0.0534 | Val Loss: 0.0641 | Val F1: 0.9501 | Val Top1: 0.9614\n"}
+,{"stream_name":"stdout","time":13305.498901375,"data":"Epoch 07/10 | Train Loss: 0.0446 | Val Loss: 0.0631 | Val F1: 0.9515 | Val Top1: 0.9637\n"}
+,{"stream_name":"stdout","time":13369.269198312,"data":"Epoch 08/10 | Train Loss: 0.0274 | Val Loss: 0.0478 | Val F1: 0.9697 | Val Top1: 0.9766\n"}
+,{"stream_name":"stdout","time":13435.483834122,"data":"Epoch 09/10 | Train Loss: 0.0235 | Val Loss: 0.0536 | Val F1: 0.9648 | Val Top1: 0.9732\n"}
+,{"stream_name":"stdout","time":13500.128469584,"data":"Epoch 10/10 | Train Loss: 0.0188 | Val Loss: 0.0523 | Val F1: 0.9637 | Val Top1: 0.9723\n"}
+,{"stream_name":"stdout","time":13564.669358298,"data":"PROGRESS {'Backbones': 5, 'Training': 8, 'Inference': 5, 'Final': 4, 'PerClass': 36, 'Latency': 11, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":13564.670224218,"data":"START F01 1 convnext_tiny\n"}
+,{"stream_name":"stdout","time":13675.650840594,"data":"Epoch 01/10 | Train Loss: 0.5056 | Val Loss: 0.3197 | Val F1: 0.6744 | Val Top1: 0.7972\n"}
+,{"stream_name":"stdout","time":13742.073248764,"data":"Epoch 02/10 | Train Loss: 0.1860 | Val Loss: 0.1495 | Val F1: 0.8771 | Val Top1: 0.8915\n"}
+,{"stream_name":"stdout","time":13816.833709589,"data":"Epoch 03/10 | Train Loss: 0.1352 | Val Loss: 0.1211 | Val F1: 0.9055 | Val Top1: 0.9177\n"}
+,{"stream_name":"stdout","time":13887.860277271,"data":"Epoch 04/10 | Train Loss: 0.0947 | Val Loss: 0.1072 | Val F1: 0.9105 | Val Top1: 0.9312\n"}
+,{"stream_name":"stdout","time":13961.669718864,"data":"Epoch 05/10 | Train Loss: 0.0838 | Val Loss: 0.0652 | Val F1: 0.9406 | Val Top1: 0.9532\n"}
+,{"stream_name":"stdout","time":14032.463738425,"data":"Epoch 06/10 | Train Loss: 0.0491 | Val Loss: 0.0688 | Val F1: 0.9419 | Val Top1: 0.9549\n"}
+,{"stream_name":"stdout","time":14099.722314325,"data":"Epoch 07/10 | Train Loss: 0.0455 | Val Loss: 0.0461 | Val F1: 0.9575 | Val Top1: 0.9680\n"}
+,{"stream_name":"stdout","time":14167.277127793,"data":"Epoch 08/10 | Train Loss: 0.0296 | Val Loss: 0.0439 | Val F1: 0.9664 | Val Top1: 0.9740\n"}
+,{"stream_name":"stdout","time":14236.773264592,"data":"Epoch 09/10 | Train Loss: 0.0214 | Val Loss: 0.0424 | Val F1: 0.9668 | Val Top1: 0.9746\n"}
+,{"stream_name":"stdout","time":14302.488406733,"data":"Epoch 10/10 | Train Loss: 0.0178 | Val Loss: 0.0407 | Val F1: 0.9679 | Val Top1: 0.9757\n"}
+,{"stream_name":"stdout","time":14363.534520298,"data":"PROGRESS {'Backbones': 5, 'Training': 8, 'Inference': 5, 'Final': 5, 'PerClass': 45, 'Latency': 11, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":14363.535447383,"data":"START F01 2 convnext_tiny\n"}
+,{"stream_name":"stdout","time":14490.695284023,"data":"Epoch 01/10 | Train Loss: 0.4934 | Val Loss: 0.2199 | Val F1: 0.8311 | Val Top1: 0.8755\n"}
+,{"stream_name":"stdout","time":14561.356284379,"data":"Epoch 02/10 | Train Loss: 0.1846 | Val Loss: 0.1756 | Val F1: 0.8367 | Val Top1: 0.8829\n"}
+,{"stream_name":"stdout","time":14631.492111165,"data":"Epoch 03/10 | Train Loss: 0.1311 | Val Loss: 0.0889 | Val F1: 0.9139 | Val Top1: 0.9352\n"}
+,{"stream_name":"stdout","time":14696.223327311,"data":"Epoch 04/10 | Train Loss: 0.0933 | Val Loss: 0.0730 | Val F1: 0.9352 | Val Top1: 0.9472\n"}
+,{"stream_name":"stdout","time":14760.579599448,"data":"Epoch 05/10 | Train Loss: 0.0796 | Val Loss: 0.0781 | Val F1: 0.9329 | Val Top1: 0.9477\n"}
+,{"stream_name":"stdout","time":14836.682949215,"data":"Epoch 06/10 | Train Loss: 0.0566 | Val Loss: 0.0562 | Val F1: 0.9510 | Val Top1: 0.9629\n"}
+,{"stream_name":"stdout","time":14916.801176318,"data":"Epoch 07/10 | Train Loss: 0.0400 | Val Loss: 0.0563 | Val F1: 0.9557 | Val Top1: 0.9654\n"}
+,{"stream_name":"stdout","time":14982.442511568,"data":"Epoch 08/10 | Train Loss: 0.0248 | Val Loss: 0.0440 | Val F1: 0.9657 | Val Top1: 0.9740\n"}
+,{"stream_name":"stdout","time":15049.130115849,"data":"Epoch 09/10 | Train Loss: 0.0215 | Val Loss: 0.0430 | Val F1: 0.9661 | Val Top1: 0.9746\n"}
+,{"stream_name":"stdout","time":15112.598041017,"data":"Epoch 10/10 | Train Loss: 0.0202 | Val Loss: 0.0421 | Val F1: 0.9684 | Val Top1: 0.9757\n"}
+,{"stream_name":"stdout","time":15173.202325118,"data":"PROGRESS {'Backbones': 5, 'Training': 8, 'Inference': 5, 'Final': 6, 'PerClass': 54, 'Latency': 11, 'Summary': 0}\n"}
+,{"stream_name":"stdout","time":15173.245008196,"data":"### T00 (3 seed: [0, 1, 2]; 3507 ảnh)\n"}
+,{"stream_name":"stdout","time":15173.245038685,"data":"\n"}
+,{"stream_name":"stdout","time":15173.245044196,"data":"| Chỉ số | mean ± std |\n"}
+,{"stream_name":"stdout","time":15173.245049265,"data":"|---|---|\n"}
+,{"stream_name":"stdout","time":15173.245053952,"data":"| top-1 accuracy | 0.9773 ± 0.0026 |\n"}
+,{"stream_name":"stdout","time":15173.245058807,"data":"| macro-F1 | 0.9714 ± 0.0030 |\n"}
+,{"stream_name":"stdout","time":15173.245063475,"data":"| balanced accuracy | 0.9742 ± 0.0035 |\n"}
+,{"stream_name":"stdout","time":15173.245068174,"data":"| ECE (15 bin) | 0.0092 ± 0.0029 |\n"}
+,{"stream_name":"stdout","time":15173.245073137,"data":"| NLL | 0.0788 ± 0.0076 |\n"}
+,{"stream_name":"stdout","time":15173.245077861,"data":"\n"}
+,{"stream_name":"stdout","time":15173.245091894,"data":"| Lớp | Precision | Recall | F1 | Số ảnh |\n"}
+,{"stream_name":"stdout","time":15173.245095916,"data":"|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":15173.245099676,"data":"| Chinee Apple | 0.971 ± 0.003 | 0.937 ± 0.007 | 0.953 ± 0.004 | 226 |\n"}
+,{"stream_name":"stdout","time":15173.245103616,"data":"| Lantana | 0.948 ± 0.036 | 0.986 ± 0.005 | 0.967 ± 0.018 | 213 |\n"}
+,{"stream_name":"stdout","time":15173.245107489,"data":"| Parkinsonia | 0.976 ± 0.008 | 0.977 ± 0.003 | 0.977 ± 0.005 | 207 |\n"}
+,{"stream_name":"stdout","time":15173.245111418,"data":"| Parthenium | 0.993 ± 0.003 | 0.976 ± 0.000 | 0.984 ± 0.001 | 205 |\n"}
+,{"stream_name":"stdout","time":15173.245115294,"data":"| Prickly Acacia | 0.934 ± 0.009 | 0.978 ± 0.003 | 0.956 ± 0.006 | 213 |\n"}
+,{"stream_name":"stdout","time":15173.245119258,"data":"| Rubber Vine | 0.984 ± 0.003 | 0.983 ± 0.003 | 0.983 ± 0.001 | 202 |\n"}
+,{"stream_name":"stdout","time":15173.245123198,"data":"| Siam Weed | 0.965 ± 0.007 | 0.992 ± 0.003 | 0.979 ± 0.003 | 215 |\n"}
+,{"stream_name":"stdout","time":15173.245127025,"data":"| Snake Weed | 0.961 ± 0.022 | 0.958 ± 0.015 | 0.959 ± 0.007 | 204 |\n"}
+,{"stream_name":"stdout","time":15173.245131004,"data":"| Negatives | 0.988 ± 0.002 | 0.981 ± 0.003 | 0.985 ± 0.002 | 1822 |\n"}
+,{"stream_name":"stdout","time":15173.29669284,"data":"### F01 (3 seed: [0, 1, 2]; 3507 ảnh)\n"}
+,{"stream_name":"stdout","time":15173.296720593,"data":"\n"}
+,{"stream_name":"stdout","time":15173.29672562,"data":"| Chỉ số | mean ± std |\n"}
+,{"stream_name":"stdout","time":15173.296729631,"data":"|---|---|\n"}
+,{"stream_name":"stdout","time":15173.296733295,"data":"| top-1 accuracy | 0.9778 ± 0.0029 |\n"}
+,{"stream_name":"stdout","time":15173.296737173,"data":"| macro-F1 | 0.9709 ± 0.0045 |\n"}
+,{"stream_name":"stdout","time":15173.296741023,"data":"| balanced accuracy | 0.9729 ± 0.0053 |\n"}
+,{"stream_name":"stdout","time":15173.296744835,"data":"| ECE (15 bin) | 0.0383 ± 0.0046 |\n"}
+,{"stream_name":"stdout","time":15173.296748711,"data":"| NLL | 0.0968 ± 0.0061 |\n"}
+,{"stream_name":"stdout","time":15173.296752638,"data":"\n"}
+,{"stream_name":"stdout","time":15173.296756382,"data":"| Lớp | Precision | Recall | F1 | Số ảnh |\n"}
+,{"stream_name":"stdout","time":15173.296760211,"data":"|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":15173.296763685,"data":"| Chinee Apple | 0.967 ± 0.016 | 0.935 ± 0.009 | 0.951 ± 0.012 | 226 |\n"}
+,{"stream_name":"stdout","time":15173.296767633,"data":"| Lantana | 0.969 ± 0.011 | 0.981 ± 0.008 | 0.975 ± 0.003 | 213 |\n"}
+,{"stream_name":"stdout","time":15173.296771286,"data":"| Parkinsonia | 0.978 ± 0.007 | 0.979 ± 0.006 | 0.978 ± 0.004 | 207 |\n"}
+,{"stream_name":"stdout","time":15173.296775251,"data":"| Parthenium | 1.000 ± 0.000 | 0.956 ± 0.013 | 0.978 ± 0.007 | 205 |\n"}
+,{"stream_name":"stdout","time":15173.296779136,"data":"| Prickly Acacia | 0.930 ± 0.002 | 0.980 ± 0.007 | 0.954 ± 0.002 | 213 |\n"}
+,{"stream_name":"stdout","time":15173.296783024,"data":"| Rubber Vine | 0.976 ± 0.017 | 0.983 ± 0.008 | 0.979 ± 0.005 | 202 |\n"}
+,{"stream_name":"stdout","time":15173.296786778,"data":"| Siam Weed | 0.979 ± 0.003 | 0.992 ± 0.003 | 0.985 ± 0.001 | 215 |\n"}
+,{"stream_name":"stdout","time":15173.296790557,"data":"| Snake Weed | 0.938 ± 0.010 | 0.966 ± 0.015 | 0.952 ± 0.012 | 204 |\n"}
+,{"stream_name":"stdout","time":15173.296794418,"data":"| Negatives | 0.988 ± 0.002 | 0.984 ± 0.002 | 0.986 ± 0.001 | 1822 |\n"}
+,{"stream_name":"stdout","time":15173.30780497,"data":"PROGRESS {'Backbones': 5, 'Training': 8, 'Inference': 5, 'Final': 8, 'PerClass': 54, 'Latency': 11, 'Summary': 10}\n"}
+,{"stream_name":"stdout","time":15176.058890069,"data":"COMPLETE {'python': '3.13.15', 'torch': '2.11.0+cu128', 'timm': '1.0.24', 'gpu': 'Tesla T4', 'cuda': '12.8', 'epochs': 10, 'batch_size': 32, 'started_utc': '2026-10-04T05:32:23Z', 'finished_utc': '2026-10-04T09:44:30Z', 'status': 'complete'}\n"}
+,{"stream_name":"stderr","time":15182.399715509,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":15182.399748438,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":15182.617304826,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":15182.61733076,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":15183.43979434,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":15183.54951237,"data":"[NbConvertApp] Writing 273096 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":15185.93438501,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":15186.521230927,"data":"[NbConvertApp] Writing 525997 bytes to __results__.html\n"}
+]

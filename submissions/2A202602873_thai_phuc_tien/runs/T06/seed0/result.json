@@ -1,0 +1,12 @@
+{
+  "exp_id": "T06",
+  "seed": 0,
+  "backbone": "convnext_tiny",
+  "params_m": 27.827049,
+  "gmacs": 4.454770176,
+  "best_epoch": 8,
+  "best_val_macro_f1": 0.9625803011004409,
+  "total_train_time_s": 656.1656448841095,
+  "time_per_epoch_s": 65.61656448841094,
+  "test_metrics": null
+}

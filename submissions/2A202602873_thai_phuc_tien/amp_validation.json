@@ -1,0 +1,53 @@
+{
+  "inference": {
+    "exp_id": "I09",
+    "checkpoint": "T05",
+    "method": "AMP FP16 (validation-only diagnostic)",
+    "K": 1,
+    "val_macro_f1": 0.9694384996313334,
+    "val_top1": 0.9762924878606113,
+    "ece": 0.04064408149830923,
+    "temperature": 1,
+    "p50": 7.391472499932661,
+    "p95": 7.697905549969164,
+    "p99": 8.243392000055117,
+    "images_per_s": 135.29103977713646,
+    "note": "Added after selection was locked; validation only; does not change or reevaluate final test."
+  },
+  "latency": [
+    {
+      "exp_id": "I09",
+      "gpu": "Tesla T4",
+      "dtype": "amp",
+      "batch": 1,
+      "img_size": 224,
+      "p50": 7.391472499932661,
+      "p95": 7.697905549969164,
+      "p99": 8.243392000055117,
+      "images_per_s": 135.29103977713646,
+      "torch": "2.11.0+cu128",
+      "fused_bn": false
+    },
+    {
+      "exp_id": "I09_batch32",
+      "gpu": "Tesla T4",
+      "dtype": "amp",
+      "batch": 32,
+      "img_size": 224,
+      "p50": 46.76801549999254,
+      "p95": 47.426766499995665,
+      "p99": 47.560290969996686,
+      "images_per_s": 684.2283055607759,
+      "torch": "2.11.0+cu128",
+      "fused_bn": false
+    }
+  ],
+  "runtime": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu128",
+    "gpu": "Tesla T4"
+  },
+  "n_val": 3501,
+  "test_evaluated": false,
+  "selection_changed": false
+}

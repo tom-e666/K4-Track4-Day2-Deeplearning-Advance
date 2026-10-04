@@ -1,0 +1,12 @@
+{
+  "exp_id": "B01",
+  "seed": 0,
+  "backbone": "resnet50",
+  "params_m": 23.526473,
+  "gmacs": 4.087154688,
+  "best_epoch": 9,
+  "best_val_macro_f1": 0.8172585653335402,
+  "total_train_time_s": 588.2206742763519,
+  "time_per_epoch_s": 58.82206742763519,
+  "test_metrics": null
+}

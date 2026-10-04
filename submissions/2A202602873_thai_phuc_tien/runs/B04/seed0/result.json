@@ -1,0 +1,12 @@
+{
+  "exp_id": "B04",
+  "seed": 0,
+  "backbone": "efficientnet_b0",
+  "params_m": 4.019077,
+  "gmacs": 0.384546272,
+  "best_epoch": 10,
+  "best_val_macro_f1": 0.8159017310898072,
+  "total_train_time_s": 645.3056802749634,
+  "time_per_epoch_s": 64.53056802749634,
+  "test_metrics": null
+}

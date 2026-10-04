@@ -64,12 +64,16 @@ def param_groups(model: nn.Module, lr_backbone: float, lr_head: float, weight_de
     backbone_weights = []
     backbone_norm_bias = []
     head_params = []
+    head_norm_bias = []
 
     for name, p in model.named_parameters():
         if not p.requires_grad:
             continue
         if id(p) in head_param_ids:
-            head_params.append(p)
+            if p.ndim <= 1 or name.endswith(".bias"):
+                head_norm_bias.append(p)
+            else:
+                head_params.append(p)
         elif p.ndim <= 1 or name.endswith(".bias"):
             backbone_norm_bias.append(p)
         else:
@@ -82,6 +86,8 @@ def param_groups(model: nn.Module, lr_backbone: float, lr_head: float, weight_de
         groups.append({"params": backbone_norm_bias, "lr": lr_backbone, "weight_decay": 0.0})
     if head_params:
         groups.append({"params": head_params, "lr": lr_head, "weight_decay": weight_decay})
+    if head_norm_bias:
+        groups.append({"params": head_norm_bias, "lr": lr_head, "weight_decay": 0.0})
 
     return groups
 
@@ -92,56 +98,25 @@ def count_params(model: nn.Module) -> float:
 
 
 def count_gmacs(model: nn.Module, img_size: int = 224) -> float:
-    """Tính GMAC cho một ảnh 3 x img_size x img_size."""
+    """Count convolution/matmul MACs, including attention; 2 FLOPs = 1 MAC.
+
+    Requires PyTorch's operator-level counter. Fail explicitly when unavailable
+    rather than publish incomplete transformer counts.
+    """
+    from torch.utils.flop_counter import FlopCounterMode
+
+    parameter = next(model.parameters())
+    x = torch.randn(1, 3, img_size, img_size,
+                    device=parameter.device, dtype=parameter.dtype)
+    modes = {module: module.training for module in model.modules()}
     try:
-        from torchprofile import profile_macs
-        dev = next(model.parameters()).device
-        x = torch.randn(1, 3, img_size, img_size, device=dev)
-        return float(profile_macs(model, x)) / 1e9
-    except Exception:
-        pass
-
-    try:
-        from thop import profile
-        dev = next(model.parameters()).device
-        x = torch.randn(1, 3, img_size, img_size, device=dev)
-        macs, _ = profile(model, inputs=(x,), verbose=False)
-        return float(macs) / 1e9
-    except Exception:
-        pass
-
-    # Đếm MACs chuẩn xác bằng hook cho Conv2d và Linear
-    total_macs = 0
-    hooks = []
-
-    def hook_fn(module, inp, out):
-        nonlocal total_macs
-        if isinstance(module, nn.Conv2d):
-            b, c_out, h_out, w_out = out.shape
-            k_h, k_w = module.kernel_size
-            c_in = module.in_channels // module.groups
-            total_macs += b * c_out * h_out * w_out * (c_in * k_h * k_w)
-        elif isinstance(module, nn.Linear):
-            b = out.shape[0]
-            total_macs += b * module.in_features * module.out_features
-
-    for m in model.modules():
-        if isinstance(m, (nn.Conv2d, nn.Linear)):
-            hooks.append(m.register_forward_hook(hook_fn))
-
-    dev = next(model.parameters()).device
-    was_training = model.training
-    model.eval()
-    with torch.no_grad():
-        x = torch.randn(1, 3, img_size, img_size, device=dev)
-        try:
+        model.eval()
+        with torch.no_grad(), FlopCounterMode(display=False) as counter:
             model(x)
-        except Exception:
-            pass
-
-    for h in hooks:
-        h.remove()
-    if was_training:
-        model.train()
-
-    return total_macs / 1e9
+        flops = counter.get_total_flops()
+        if flops <= 0:
+            raise RuntimeError("No supported convolution/matmul operations were counted")
+        return float(flops) / 2e9
+    finally:
+        for module, training in modes.items():
+            module.training = training

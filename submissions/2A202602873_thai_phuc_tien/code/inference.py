@@ -116,23 +116,7 @@ def fuse_conv_bn(model: nn.Module) -> nn.Module:
             n1, c1 = children[i]
             n2, c2 = children[i + 1]
             if isinstance(c1, nn.Conv2d) and isinstance(c2, nn.modules.batchnorm._BatchNorm):
-                w = c1.weight
-                mean = c2.running_mean
-                var_sqrt = torch.sqrt(c2.running_var + c2.eps)
-                beta = c2.bias
-                gamma = c2.weight
-                b = c1.bias if c1.bias is not None else torch.zeros_like(mean)
-
-                w_new = w * (gamma / var_sqrt).reshape([c1.out_channels] + [1] * (len(w.shape) - 1))
-                b_new = (b - mean) / var_sqrt * gamma + beta
-
-                fused_conv = nn.Conv2d(
-                    c1.in_channels, c1.out_channels, c1.kernel_size,
-                    stride=c1.stride, padding=c1.padding, dilation=c1.dilation,
-                    groups=c1.groups, bias=True, padding_mode=c1.padding_mode
-                )
-                fused_conv.weight.data.copy_(w_new)
-                fused_conv.bias.data.copy_(b_new)
+                fused_conv = torch.nn.utils.fusion.fuse_conv_bn_eval(c1, c2)
 
                 setattr(m, n1, fused_conv)
                 setattr(m, n2, nn.Identity())
