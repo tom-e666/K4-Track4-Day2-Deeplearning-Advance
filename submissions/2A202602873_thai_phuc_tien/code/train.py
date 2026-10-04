@@ -16,6 +16,10 @@ import numpy as np
 import pandas as pd
 import torch
 import torch.nn as nn
+try:
+    import torch.amp as amp
+except ImportError:
+    amp = None
 from torch.optim import AdamW
 from torch.optim.lr_scheduler import LambdaLR
 
@@ -148,11 +152,11 @@ def train_one_epoch(net: nn.Module, loader, criterion, optimizer, scheduler, sca
         else:
             mix_targets = None
 
-        autocast_ctx = (
-            torch.amp.autocast("cuda", enabled=cfg.amp and torch.cuda.is_available())
-            if hasattr(torch.amp, "autocast")
-            else torch.cuda.amp.autocast(enabled=cfg.amp and torch.cuda.is_available())
-        )
+        if amp is not None and hasattr(amp, "autocast"):
+            autocast_ctx = amp.autocast("cuda", enabled=cfg.amp and torch.cuda.is_available())
+        else:
+            autocast_ctx = torch.cuda.amp.autocast(enabled=cfg.amp and torch.cuda.is_available())
+
         with autocast_ctx:
             outputs = net(images)
             if mix_targets is not None:
@@ -162,14 +166,17 @@ def train_one_epoch(net: nn.Module, loader, criterion, optimizer, scheduler, sca
 
         if scaler is not None and cfg.amp and torch.cuda.is_available():
             scaler.scale(loss).backward()
+            scale_before = scaler.get_scale()
             scaler.step(optimizer)
             scaler.update()
+            scale_after = scaler.get_scale()
+            if scheduler is not None and scale_before <= scale_after:
+                scheduler.step()
         else:
             loss.backward()
             optimizer.step()
-
-        if scheduler is not None:
-            scheduler.step()
+            if scheduler is not None:
+                scheduler.step()
 
         if ema is not None:
             ema.update(net)
@@ -281,11 +288,10 @@ def run(cfg: Config) -> dict:
 
     optimizer = build_optimizer(net, cfg)
     scheduler = build_scheduler(optimizer, cfg, len(train_loader))
-    scaler = (
-        torch.amp.GradScaler("cuda", enabled=cfg.amp and torch.cuda.is_available())
-        if hasattr(torch.amp, "GradScaler")
-        else torch.cuda.amp.GradScaler(enabled=cfg.amp and torch.cuda.is_available())
-    )
+    if amp is not None and hasattr(amp, "GradScaler"):
+        scaler = amp.GradScaler("cuda", enabled=cfg.amp and torch.cuda.is_available())
+    else:
+        scaler = torch.cuda.amp.GradScaler(enabled=cfg.amp and torch.cuda.is_available())
     ema = EMA(net, decay=cfg.ema_decay) if cfg.ema_decay is not None else None
 
     # 3. Training Loop
