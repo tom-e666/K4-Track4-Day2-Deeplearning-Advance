@@ -148,9 +148,12 @@ def train_one_epoch(net: nn.Module, loader, criterion, optimizer, scheduler, sca
         else:
             mix_targets = None
 
-        optimizer.zero_grad()
-
-        with torch.cuda.amp.autocast(enabled=cfg.amp and torch.cuda.is_available()):
+        autocast_ctx = (
+            torch.amp.autocast("cuda", enabled=cfg.amp and torch.cuda.is_available())
+            if hasattr(torch.amp, "autocast")
+            else torch.cuda.amp.autocast(enabled=cfg.amp and torch.cuda.is_available())
+        )
+        with autocast_ctx:
             outputs = net(images)
             if mix_targets is not None:
                 loss = losses.mixed_loss(criterion, outputs, mix_targets)
@@ -278,7 +281,11 @@ def run(cfg: Config) -> dict:
 
     optimizer = build_optimizer(net, cfg)
     scheduler = build_scheduler(optimizer, cfg, len(train_loader))
-    scaler = torch.cuda.amp.GradScaler(enabled=cfg.amp and torch.cuda.is_available())
+    scaler = (
+        torch.amp.GradScaler("cuda", enabled=cfg.amp and torch.cuda.is_available())
+        if hasattr(torch.amp, "GradScaler")
+        else torch.cuda.amp.GradScaler(enabled=cfg.amp and torch.cuda.is_available())
+    )
     ema = EMA(net, decay=cfg.ema_decay) if cfg.ema_decay is not None else None
 
     # 3. Training Loop
