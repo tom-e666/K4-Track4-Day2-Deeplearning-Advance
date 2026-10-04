@@ -38,6 +38,11 @@ import losses
 import model as md
 
 
+def softmax(logits: np.ndarray) -> np.ndarray:
+    e = np.exp(logits - np.max(logits, axis=-1, keepdims=True))
+    return e / np.sum(e, axis=-1, keepdims=True)
+
+
 @dataclass
 class Config:
     # --- định danh ---
@@ -288,7 +293,7 @@ def run(cfg: Config) -> dict:
 
         eval_net = ema.shadow if ema is not None else net
         v_names, v_true, v_logits, v_loss = evaluate(eval_net, val_loader, criterion, device)
-        v_probs = ev.softmax(v_logits)
+        v_probs = softmax(v_logits)
         v_pred = v_probs.argmax(axis=1)
         v_metrics = ev.compute_metrics(v_true, v_pred, v_probs)
 
@@ -301,6 +306,9 @@ def run(cfg: Config) -> dict:
             "lr": tr_stats["lr"],
         }
         history.append(row)
+
+        print(f"Epoch {ep:02d}/{cfg.epochs:02d} | Train Loss: {tr_stats['train_loss']:.4f} | "
+              f"Val Loss: {v_loss:.4f} | Val F1: {v_metrics['macro_f1']:.4f} | Val Top1: {v_metrics['top1']:.4f}")
 
         if v_metrics["macro_f1"] > best_f1:
             best_f1 = v_metrics["macro_f1"]
@@ -320,7 +328,7 @@ def run(cfg: Config) -> dict:
     eval_net.load_state_dict(torch.load(best_ckpt_path, map_location=device))
 
     val_names, val_true, val_logits, _ = evaluate(eval_net, val_loader, criterion, device)
-    val_probs = ev.softmax(val_logits)
+    val_probs = softmax(val_logits)
     ev.save_predictions(pred_path(cfg, "val"), val_names, val_true, val_probs)
     np.save(r_dir / "val_logits.npy", val_logits)
 
@@ -331,7 +339,7 @@ def run(cfg: Config) -> dict:
         test_loader = dataset.make_loader(test_df, cfg.images_dir, test_tf, cfg.batch_size, train=False,
                                           num_workers=cfg.num_workers)
         test_names, test_true, test_logits, _ = evaluate(eval_net, test_loader, criterion, device)
-        test_probs = ev.softmax(test_logits)
+        test_probs = softmax(test_logits)
         ev.save_predictions(pred_path(cfg, "test"), test_names, test_true, test_probs)
         np.save(r_dir / "test_logits.npy", test_logits)
         test_metrics = ev.compute_metrics(test_true, test_probs.argmax(axis=1), test_probs)
